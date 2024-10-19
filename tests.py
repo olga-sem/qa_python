@@ -22,3 +22,8 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+
+    def test_add_new_book_over_40_symbols(self):
+        collector = BooksCollector()
+        collector.add_new_book('Клуб любителей книг и пирогов из картофельных очистков')
+        assert len(collector.get_books_rating()) != 3
