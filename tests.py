@@ -27,3 +27,8 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Клуб любителей книг и пирогов из картофельных очистков')
         assert len(collector.get_books_rating()) != 3
+
+    def test_add_new_book_two_times(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        assert 'Гордость и предубеждение и зомби' not in collector
