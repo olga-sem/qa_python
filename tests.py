@@ -15,7 +15,7 @@ class TestBooksCollector:
     def test_add_new_book_two_times(self, collector):
         collector.add_new_book('Гордость и предубеждение')
         collector.add_new_book('Гордость и предубеждение')
-        assert len(collector.get_books_genre()) != 2
+        assert len(collector.get_books_genre()) == 1
 
     def test_set_book_genre_existing_book_and_existing_genre(self, collector):
         collector.add_new_book('Divergent')
@@ -41,7 +41,7 @@ class TestBooksCollector:
         collector.add_new_book('Divergent')
         assert collector.get_books_genre() == {'Divergent': ''}
 
-    @pytest.mark.parametrize('name', ['Cinderella', 'Beauty and The Beast'])
+    @pytest.mark.parametrize('name', ['A', 'Cinderella', 'Beauty and the Beast in the dark forest!!', 'Cinderella and Prince go to the Red King'])
     def test_get_books_for_children_without_rating(self, collector, name):
         collector.add_new_book(name)
         collector.set_book_genre(name, 'Мультфильмы')
