@@ -32,6 +32,7 @@ class TestBooksCollector:
         collector.set_book_genre('Divergent', 'Фантастика')
         assert collector.get_book_genre('Divergent') == 'Фантастика'
 
+
     def test_get_books_with_specific_genre(self, collector):
         collector.add_new_book('Divergent')
         collector.set_book_genre('Divergent', 'Фантастика')
@@ -41,11 +42,14 @@ class TestBooksCollector:
         collector.add_new_book('Divergent')
         assert collector.get_books_genre() == {'Divergent': ''}
 
-    @pytest.mark.parametrize('name', ['A', 'Cinderella', 'Beauty and the Beast in the dark forest!!', 'Cinderella and Prince go to the Red King'])
+
+    @pytest.mark.parametrize('name', ['A', 'Cinderella', 'Beauty and the Beast in the dark forest!!',
+                                          'Cinderella and Prince go to the Red King'])
     def test_get_books_for_children_without_rating(self, collector, name):
         collector.add_new_book(name)
         collector.set_book_genre(name, 'Мультфильмы')
         assert name in collector.get_books_for_children()
+
 
     def test_add_book_in_favorites_one_book(self, collector):
         collector.add_new_book('Гордость и предубеждение')
